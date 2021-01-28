@@ -7,7 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class chofere extends Model
 {
-protected $guarded = [];
 
+public function scopeBuscarpor($query, $tipo, $buscar){
+      
+      if(($tipo) && ($buscar)){
 
+        return $query->where($tipo, 'like', "%$buscar%");
+
+      }
+
+  }
+
+	protected $fillable = [
+	    'names',
+	    'apellido',
+	    'cedula',
+	    'placas',
+	    'tlf',
+	    
+	];
 }

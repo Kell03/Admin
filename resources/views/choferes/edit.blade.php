@@ -8,6 +8,17 @@
 
       <h3>Editar Chofer: {{$choferes->names}} {{$choferes->apellido}}</h3>
 
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
 <form action="{{route('choferes.update', $choferes->id)}}" method="POST">
    @method('PATCH')
 
@@ -30,7 +41,7 @@
 
   <div class="form-group">
     <label for="placa">Placa</label>
-    <input type="text" class="form-control" name="placa" value="{{$choferes->placa}}" placeholder="Escribe el numero de placa">
+    <input type="text" class="form-control" name="placas" value="{{$choferes->placas}}" placeholder="Escribe el numero de placa">
   </div>
 
     <div class="form-group">

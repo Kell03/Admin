@@ -13,7 +13,7 @@ class CreateGandolasTable extends Migration
      */
     public function up()
     {
-        Schema::create('gandolas', function (Blueprint $table) {
+Schema::create('gandolas', function (Blueprint $table) {
             $table->id();
             $table->string('propietario');
             $table->string('marca');
@@ -24,10 +24,6 @@ class CreateGandolasTable extends Migration
             $table->timestamps();
         });
     }
-
-    Schema::table('gandolas', function ($table) {
-   $table->dropColumn('bat');
-});
 
     /**
      * Reverse the migrations.

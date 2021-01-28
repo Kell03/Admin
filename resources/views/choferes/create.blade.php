@@ -29,7 +29,7 @@
 
   <div class="form-group">
     <label for="placa">Placa</label>
-    <select class="form-control border-0 bg-light shadow-sm" name="placa" >
+    <select class="form-control border-0 bg-light shadow-sm" name="placas" >
         @foreach($gandolas as $row)
         <option></option>
         <option value="{{$row->placa}}"> {{$row->id}}. {{$row->modelo}}-{{$row->placa}} </option>

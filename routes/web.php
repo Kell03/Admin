@@ -88,6 +88,11 @@ Route::delete('/guias/{id}', [App\Http\Controllers\GuiaController::class, 'destr
 Route::get('/guias/{id}', [App\Http\Controllers\GuiaController::class, 'show'])->name('guias.show');
 
 
+Route::get('/consultas', [App\Http\Controllers\ConsultaController::class, 'index'])->name('consultas.index');
+Route::get('/consulta', [App\Http\Controllers\CombinadaController::class, 'index'])->name('consultas.consul');
+
+Route::get('/excel/post-export', [App\Http\Controllers\GuiaController::class, 'export'])->name('post.export');
+
 
 Route::get('/notas/todas', [App\Http\Controllers\NotasController::class, 'todas']);
 Route::get('/notas/favoritas', [App\Http\Controllers\NotasController::class, 'favoritas']);

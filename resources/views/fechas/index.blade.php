@@ -4,6 +4,9 @@
 @section('content')
 <div class="container">
 <h2>Lista de guias <a href="{{ route('guias.create')}}"><button type="button" class="btn btn-success">Agregar Guia</button></a>
+</h2>
+
+
 
 <nav class="navbar navbar-light float-right">
   <form class="form-inline">
@@ -13,10 +16,8 @@
      <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
       <option>Buscar por</option>
       <option>Guia</option>
-      <option>Chofer</option>
-      <option>placa</option>
       <option>Dueño</option>
-      <option>Carga</option>
+      <option>Placa</option>
       <option>Origen</option>
       <option>Destino</option>
       <option>Status</option>
@@ -31,7 +32,15 @@
   </form>
 </nav>
 
+<nav class="navbar navbar-light float-right">
+  
+    <form class="form-inline">
+          <div class="input-group input-group-sm"> 
 
+      <input name="tiempo" class="form-control mr-sm-2" type="Date" placeholder="Search" aria-label="Search">
+      <div class="input-group-append">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Search</button>
+    </div>
     </div>
     </form>
 </nav>
@@ -48,7 +57,6 @@
      
       <th scope="col">Guia</th>
       <th scope="col">Chofer</th>
-      {{--<th scope="col">Nombre</th>--}}
       <th scope="col">Placa</th>
       <th scope="col">Origen</th>
       <th scope="col">Destino</th>
@@ -61,27 +69,26 @@
   </thead>
   <tbody>
 
-  	@foreach($guias as $guia)
+    @foreach($fecha as $fecha)
     <tr>
 
-      <td>{{$guia->guia}}</td>
-     {{--<td>{{$guia->names." ".$guia->apellido}}</td>--}}
-      <td>{{$guia->nombre}}</td>
-       <td>{{$guia->placa}}</td>
-       <td>{{$guia->names_origen}}</td>
-      <td>{{$guia->names_destino}}</td>
-       <td>{{$guia->carga}}</td>
-       <td>{{$guia->status}}</td>
-      <td>{{$guia->created_at}}</td>
-       <td>{{$guia->updated_at}}</td>
+      <td>{{$fecha->guia}}</td>
+      <td>{{$fecha->chofer}}</td>
+       <td>{{$fecha->placa}}</td>
+       <td>{{$fecha->origen}}</td>
+      <td>{{$fecha->destino}}</td>
+       <td>{{$fecha->carga}}</td>
+       <td>{{$fecha->status}}</td>
+      <td>{{$fecha->created_at}}</td>
+       <td>{{$fecha->updated_at}}</td>
 
 
       <td>      
 
-        <form action="{{route('guias.destroy', $guia->id)}}" method="POST">
-          <a href="{{route('guias.show', $guia)}}"> <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></button></a>
+        <form action="{{route('guias.destroy', $fecha->id)}}" method="POST">
+          <a href="{{route('guias.show', $fecha)}}"> <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></button></a>
 
-          <a href="{{route('guias.edit', $guia)}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
+          <a href="{{route('guias.edit', $fecha)}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
           @csrf
           @method('DELETE')
 
@@ -98,19 +105,8 @@
     
 
    @endforeach
-
-
-
-
   </tbody>
 </table>
-
-<h5>
- El numero de registros en total es: {{$guie}}
-</h5>
-<br>
-{{ $guias->links() }}
-
 
 
 </div>

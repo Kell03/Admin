@@ -23,16 +23,22 @@ class ChofereController extends Controller
     public function index(Request $request)
     {
 
-        if($request){
+
+     $buscar= $request->get('buscar');
+     $tipo= $request->get('tipo');
+
+       $chofer = chofere
+::Buscarpor($tipo, $buscar)
+->select("guias.*")->count(); 
+
+$choferes = chofere
+::Buscarpor($tipo, $buscar)
+->simplepaginate(5);
 
 
-$query= trim($request->get('search'));
+      return view('choferes.index', compact('choferes', 'chofer'));
 
-    $choferes = chofere::where('cedula', 'LIKE', '%' .$query. '%')->OrderBy('id','asc')->get();
 
-      return view('choferes.index', ['choferes' => $choferes, 'search' => $query]);
-
-}
 
        // $choferes = chofere::all();
          // return view('choferes.index', ['choferes' => $choferes]);
@@ -65,7 +71,7 @@ $query= trim($request->get('search'));
         $choferes->names = request('names');
         $choferes->apellido = request('apellido');
         $choferes->cedula = request('cedula');
-        $choferes->placa = request('placa');
+        $choferes->placas = request('placas');
         $choferes->tlf = request('tlf');
 
         $choferes->save();

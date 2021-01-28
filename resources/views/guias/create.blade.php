@@ -43,13 +43,33 @@
     </select>
 </div>
 
+<div class="form-group">
+    <label for="Nombre"> Nombre </label>
+    <select class = "form-control border-0 bg-light shadow-sm" name="nombre">
+        <option> </option>
+       
+       @foreach($chofere as $row)
+
+              <option value="{{ $row->names." ".$row->apellido}}">
+        {{ $row->cedula}}. {{ $row->names}} {{ $row->apellido}} 
+       
+        </option>
+
+
+
+       @endforeach
+    </select>
+
+
+</div>
+
     <div class="form-group">
     <label for="placa">Placa</label>
 <select class="form-control border-0 bg-light shadow-sm" name="placa">
 	<option></option>
 	@foreach($chofere as $row)
-<option value="{{$row->placa}}">
-	{{$row->id}}. {{$row->names}}-{{$row->placa}}
+<option value="{{$row->placas}}">
+	{{$row->id}}. {{$row->names}}-{{$row->placas}}
 
 </option>
 @endforeach
@@ -121,15 +141,15 @@
    <?php 
     if(isset($guia->created_at)){
 
-        $fecha = $guia->created_at->format('y-m-d H:i:s');
+        $fecha = $guia->created_at->format('y');
     }else{
 
 
-        $fecha= date('y-m-d H:i:s');
+        $fecha= Date('y-m-d H:i:s');
     }
 
    ?>  
-     type="date" 
+     type="Date" 
 
      name="created_at"
  >
@@ -151,7 +171,7 @@
     }else{
 
 
-        $fechas=date('y-m-d H:i:s');
+        $fechas = date('y-m-d H:i:s');
     }
 
    ?>  

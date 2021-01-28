@@ -5,27 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Guia extends Model
+class consulta extends Model
 {
     use HasFactory;
 
-       public function scopeBuscarpor($query, $tipo, $buscar){
+       
+       public function scopeBusqueda($query, $desde, $hasta){
       
-      if(($tipo) && ($buscar)){
+      if(($desde) && ($hasta)){
 
-        return $query->where($tipo, 'like', "%$buscar%");
+        return $query->whereBetween('guias.created_at', ["$desde","$hasta"]);
 
       }
 
-
-
-
   }
-	
+
+
    protected $fillable = [
         'guia',
         'chofer',
-        'nombre',
         'placa',
         'dueño',
         'origen',
@@ -36,4 +34,5 @@ class Guia extends Model
          'status',
         
     ];
-   }
+
+}

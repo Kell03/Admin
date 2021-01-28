@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCedesTable extends Migration
+class CreateChoferesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,19 @@ class CreateCedesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cedes', function (Blueprint $table) {
+           Schema::create('choferes', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
             $table->string('names');
+            $table->string('apellido');
+            $table->integer('cedula');
+            $table->string('placas');
+            $table->string('tlf');
             $table->timestamps();
         });
-    }
+       
+
+
+ }
 
     /**
      * Reverse the migrations.
@@ -28,6 +34,6 @@ class CreateCedesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cedes');
+        Schema::dropIfExists('choferes');
     }
 }

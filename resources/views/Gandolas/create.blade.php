@@ -83,7 +83,7 @@ required
 
 
     <button type="submit" class="btn btn-primary">Registrar</button>
-    <button type="reset" class="btn btn-danger">Cancelar</button>
+    <a href="{{route('gandolas.index')}}"><button type="button" class="btn btn-danger"> Cancelar</button> </a>
 
 </form>
 

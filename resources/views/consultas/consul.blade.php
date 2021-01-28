@@ -3,13 +3,47 @@
 
 @section('content')
 <div class="container">
-<h2>Lista de guias <a href="{{ route('guias.create')}}"><button type="button" class="btn btn-success">Agregar Guia</button></a>
+<h2>Lista de guias 
+</h2>
+
+
 
 <nav class="navbar navbar-light float-right">
   <form class="form-inline">
     <div class="input-group input-group-sm"> 
+
+          <div class="input-group input-group-sm"> 
     
      
+
+    
+<label>Desde</label>
+    <input class="form-control border-0 bg-light shadow-sm"
+
+   <?php 
+
+        $fecha= date('y');
+   
+
+   ?>  
+     type="date" 
+
+     name="desde"
+ >
+<label>Hasta</label>
+   <input class="form-control border-0 bg-light shadow-sm"
+
+   <?php 
+
+        $fecha= date('y');
+   
+
+   ?>  
+     type="date" 
+
+     name="hasta"
+ >
+
      <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
       <option>Buscar por</option>
       <option>Guia</option>
@@ -22,18 +56,16 @@
       <option>Status</option>
     </select>
 
+
+    
     <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
 
     <div class="input-group-append">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
   </div>
     </div>
   </form>
-</nav>
-
-
-    </div>
-    </form>
 </nav>
 
 
@@ -48,7 +80,6 @@
      
       <th scope="col">Guia</th>
       <th scope="col">Chofer</th>
-      {{--<th scope="col">Nombre</th>--}}
       <th scope="col">Placa</th>
       <th scope="col">Origen</th>
       <th scope="col">Destino</th>
@@ -65,35 +96,17 @@
     <tr>
 
       <td>{{$guia->guia}}</td>
-     {{--<td>{{$guia->names." ".$guia->apellido}}</td>--}}
-      <td>{{$guia->nombre}}</td>
+      <td>{{$guia->names." ".$guia->apellido}}</td>
        <td>{{$guia->placa}}</td>
-       <td>{{$guia->names_origen}}</td>
-      <td>{{$guia->names_destino}}</td>
+       <td>{{$guia->origen}}</td>
+      <td>{{$guia->destino}}</td>
        <td>{{$guia->carga}}</td>
        <td>{{$guia->status}}</td>
       <td>{{$guia->created_at}}</td>
        <td>{{$guia->updated_at}}</td>
 
 
-      <td>      
-
-        <form action="{{route('guias.destroy', $guia->id)}}" method="POST">
-          <a href="{{route('guias.show', $guia)}}"> <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></button></a>
-
-          <a href="{{route('guias.edit', $guia)}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
-          @csrf
-          @method('DELETE')
-
-           
-
-
-                 <button type="Submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button> 
-        </form>
-
-           
-
-</td>
+      
     </tr>
     
 
@@ -104,10 +117,23 @@
 
   </tbody>
 </table>
+<h4>El numero de registros es = {{$total_records}}
+</h4>
 
-<h5>
- El numero de registros en total es: {{$guie}}
-</h5>
+<nav class="navbar navbar-light float-right">
+  <form class="form-inline">
+    <div class="input-group input-group-sm"> 
+
+<a href="{{ route('post.export')}}"><button type="button" class="btn btn-secondary btn-lg"> Exportar
+                          <i class="fas fa-download"></i>
+
+     
+                                 </button></a>
+
+    
+    </div>
+  </form>
+</nav>
 <br>
 {{ $guias->links() }}
 

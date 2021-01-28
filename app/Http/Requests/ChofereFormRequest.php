@@ -28,7 +28,7 @@ class ChofereFormRequest extends FormRequest
         'names'=>'required|max:255',
         'apellido'=>'required|max:255',
         'cedula'=>'required|max:255',
-        'placa'=>'required|max:255',
+        'placas'=>'required|max:255',
         'tlf'=>'required|max:255',
 
         ];

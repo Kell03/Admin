@@ -8,7 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>AdminLTE 3</title>
+    <title>SIGESGUI </title>
+    
+    <link rel="icon" type="img/jpg" href="{{asset('dist/img/lll.png') }}">
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -161,9 +164,9 @@
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
                 <a href="{{ url('/') }}" class="brand-link">
-                    <img src="{{asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    <img src="{{asset('dist/img/lll.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                         style="opacity: .8">
-                    <span class="brand-text font-weight-light">System Team</span>
+                    <span class="brand-text font-weight-light">SIGESGUI</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -218,7 +221,7 @@
                                     <i class="nav-icon fa fa-users"></i>
                                     <i class="bi bi-people"></i>
 
-                                    <p>Cuentas
+                                    <p>Configuracion
                           <i class="fas fa-angle-left right"></i> 
 
                                   </p>
@@ -258,7 +261,7 @@
                                      <i class="nav-icon fas fa-address-card    "></i>
 
 
-                                    <p>Registros
+                                    <p>Registro
                           <i class="fas fa-angle-left right"></i> 
 
                                   </p>
@@ -340,6 +343,43 @@
                                         Guias
                                         <?php $guias_count = DB::table('guias')->count(); ?>
                                         <span class="right badge badge-danger">{{ $guias_count ?? '0' }}</span>
+                                    </p>
+                                </a>
+
+                            </li>
+                           </ul> 
+
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-clipboard-list    "></i>
+                                    <p>Consultas
+                          <i class="fas fa-angle-left right"></i> 
+
+                      </p>
+                                </a>
+                             
+ <ul class="nav nav-treeview">
+
+                             <li class="nav-item">
+                                <a href="{{route('consultas.index')}}"
+                                    class="{{ Request::path() === 'consultas' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon far fa-newspaper  "></i>
+                                    <p>
+                                        Consulta por fecha
+                                    
+                                    </p>
+                                </a>
+
+                            </li>
+
+
+                                                        <li class="nav-item">
+                                <a href="{{route('consultas.consul')}}"
+                                    class="{{ Request::path() === 'consulta' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon far fa-newspaper  "></i>
+                                    <p>
+                                        Consultas combinadas
+                                    
                                     </p>
                                 </a>
 

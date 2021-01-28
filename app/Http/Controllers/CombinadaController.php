@@ -1,18 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\cedeformrequest;
 
 use Illuminate\Http\Request;
-use App\Models\cede;
+use App\Models\consulta;
+use App\Models\guia;
+use App\Models\guias;
 
-class cedecontroller extends Controller
-{  
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+class CombinadaController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -20,22 +17,32 @@ class cedecontroller extends Controller
      */
     public function index(Request $request)
     {
-        
-
-
-     $buscar = $request->get('buscar');
-
-      $cd = cede::where('names', 'LIKE', "%$buscar%")->count();
-
-      $cedes = cede::where('names', 'LIKE', "%$buscar%")->simplepaginate(5);
-
-      return view('cedes.index', compact('cedes', 'cd')); 
        
+    $desde=$request->get('desde');
+
+    $hasta=$request->get('hasta');
        
+    $buscar = $request->get('buscar');
 
 
-        //$cedes = cede::get()->paginate(5);
-        //return view('cedes.index', ['cedes' => $cedes]);
+  $tipo = $request->get('tipo');
+
+       $total_records = guias
+       ::join("choferes","choferes.cedula" ,"=","guias.chofer")
+       ->Buscar($desde, $hasta)
+       ->buscarpor($tipo, $buscar)
+       ->select("guias.*")->count();
+            
+
+
+       $guias = guias
+       ::join("choferes","choferes.cedula" ,"=","guias.chofer")
+       ->Buscar($desde, $hasta)
+       ->buscarpor($tipo, $buscar)
+       ->select("guias.*", "choferes.names", "choferes.apellido")->simplepaginate(5);
+            
+          return view('consultas.consul',compact('guias', 'total_records'));
+
 
     }
 
@@ -46,7 +53,7 @@ class cedecontroller extends Controller
      */
     public function create()
     {
-        return view('cedes.create');
+        //
     }
 
     /**
@@ -57,14 +64,7 @@ class cedecontroller extends Controller
      */
     public function store(Request $request)
     {
-        $cedes = new cede();
-
-        $cedes->names = request('names');
-        $cedes->codigo = request('codigo');
-
-        $cedes->save();
-
-        return redirect('/cedesss');
+        //
     }
 
     /**
@@ -75,8 +75,7 @@ class cedecontroller extends Controller
      */
     public function show($id)
     {
-            return view('cedes.show', ['cede'=> cede::findOrFail($id)]);  
-
+        //
     }
 
     /**
@@ -87,7 +86,7 @@ class cedecontroller extends Controller
      */
     public function edit($id)
     {
-                return view('cedes.edit', ['cede'=> cede::findOrFail($id)]);
+        //
     }
 
     /**
@@ -97,17 +96,9 @@ class cedecontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(cedeformrequest $request, $id)
+    public function update(Request $request, $id)
     {
-                        $cedes = cede::findOrFail($id);
-
-        $cedes->names = $request->get('names');
-        $cedes->codigo = $request->get('codigo');
-
-        $cedes->update();
-
-        return redirect('/cedesss');
-
+        //
     }
 
     /**
@@ -118,12 +109,6 @@ class cedecontroller extends Controller
      */
     public function destroy($id)
     {
-      
-       $cedes = cede::findOrFail($id);
-
-        $cedes->delete();
-
-        return redirect('/cedesss');
-
+        //
     }
 }

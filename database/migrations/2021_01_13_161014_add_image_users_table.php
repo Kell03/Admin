@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDestinoToGuias extends Migration
+class AddImageUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddDestinoToGuias extends Migration
      */
     public function up()
     {
-        Schema::table('guias', function (Blueprint $table) {
-            //
+                Schema::table('users', function (Blueprint $table) {
+
+            $table->string('imagen')->after('email_verified_at')->nullable();
         });
     }
 
@@ -25,8 +26,6 @@ class AddDestinoToGuias extends Migration
      */
     public function down()
     {
-        Schema::table('guias', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

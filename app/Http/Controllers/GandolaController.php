@@ -23,16 +23,22 @@ class GandolaController extends Controller
      */
     public function index(Request $request)
     {
-if($request){
 
 
-$query= trim($request->get('search'));
+     $buscar= $request->get('buscar');
+     $tipo= $request->get('tipo');
 
-    $gandolas = gandola::where('marca', 'LIKE', '%' .$query. '%')->OrderBy('id','asc')->simplepaginate(10);
+       $gand = gandola
+::Buscarpor($tipo, $buscar)
+->select("guias.*")->count(); 
 
-      return view('gandolas.index', ['gandolas' => $gandolas, 'search' => $query]);
+$gandolas = gandola
+::Buscarpor($tipo, $buscar)
+->simplepaginate(5);
 
-}
+
+      return view('gandolas.index', compact('gand', 'gandolas'));
+
         //$gandolas = gandola::all();
           //return view('gandolas.index', ['gandolas' => $gandolas]);
 

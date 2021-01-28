@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateRolesTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::table('roles', function (Blueprint $table) {
-         
-                     $table->bigIncrements('id');
+                     Schema::create('role_user', function (Blueprint $table) {
+              
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('label')->nullable();
             $table->timestamps();
@@ -34,8 +34,7 @@ class CreateRolesTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
         });
-
-    }
+      }
 
     /**
      * Reverse the migrations.
@@ -44,8 +43,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('roles_tables');
     }
 }

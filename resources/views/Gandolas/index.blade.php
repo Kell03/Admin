@@ -6,15 +6,38 @@
 </h2>
 <h6>
 
-  @if($search)
-  <div class="alert alert-primary"  role="alert">
-   
- Los resultados de tu  busqueda  {{$search}} son:
-</div>
+<nav class="navbar navbar-light float-right">
+  <form class="form-inline">
+    <div class="input-group input-group-sm"> 
+    
+     
+     <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+      <option>Buscar por</option>
+      <option>Placa</option>
+      <option>Modelo</option>
+      <option>Marca</option>
+    </select>
 
-@endif
-</h6>
+    <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
+    <div class="input-group-append">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+  </div>
+    </div>
+  </form>
+</nav>
+
+
+    </div>
+    </form>
+</nav>
+
+
+
+
+    <br>  
+
+<div class="container">
 
 <table class="table table-hover">
   <thead>
@@ -67,6 +90,16 @@
    @endforeach
   </tbody>
 </table>
+
+
+<h5>
+ El numero de Gandolas es: {{$gand}}
+</h5>
+
+<br>  
+
+{{ $gandolas->links() }}
+
 
 </div>
 @endsection

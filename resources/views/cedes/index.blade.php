@@ -6,16 +6,30 @@
 <h2>Lista de Centros de Distribucion <a href="{{ route('cedes.create')}}"><button type="button" class="btn btn-success float-right">Agregar CD</button></a>
 </h2>
 
-<h6>
+<nav class="navbar navbar-light float-right">
+  <form class="form-inline">
+    <div class="input-group input-group-sm"> 
+    <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Codigo" aria-label="Search">
 
-  @if($search)
-  <div class="alert alert-primary"  role="alert">
-   
- Los resultados de tu  busqueda  {{$search}} son:
-</div>
+    <div class="input-group-append">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+  </div>
+    </div>
+  </form>
+</nav>
 
-@endif
-</h6>
+
+    </div>
+    </form>
+</nav>
+
+
+
+
+<br>
+</br>
+<div class="container">
+
 
 
 <table class="table table-hover">
@@ -52,8 +66,15 @@
 
   </tbody>
 </table>
-{{ $cedes->links() }}
 
+<h4>
+ El numero de Cedes es: {{$cd}}
+</h4>
+
+<br>
+
+{{ $cedes->links() }}
+ 
 </div>
 @endsection
- 
+ </div>

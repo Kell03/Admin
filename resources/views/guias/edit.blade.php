@@ -42,6 +42,28 @@
 
   </div>
 
+
+  <div class="form-group">
+    <label for="Nombre"> Nombre </label>
+    <select class = "form-control border-0 bg-light shadow-sm" name="nombre">
+        <option value="{{old('nombre', $guia->nombre)}}"> {{old ('nombre',$guia->nombre)}} </option>
+       
+       @foreach($chofere as $row)
+
+              <option value="{{ $row->names. " " . $row->apellido}}">
+        {{ $row->cedula}}. {{ $row->names}} {{ $row->apellido}} 
+       
+        </option>
+
+
+
+       @endforeach
+    </select>
+
+
+</div>
+
+
     <div class="form-group">   
     <label for="placa">Placa</label>
 <select class="form-control border-0 bg-ligth shadow-sm" name="placa">

@@ -26,8 +26,7 @@ class chofereFactory extends Factory
             'names' => $this->faker->names,
             'apellido' => $this->faker->apellido,
             'cedula' => $this->faker->cedula,
-            'chuto' => $this->faker->chuto,
-            'placa' => $this->faker->placa,
+            'placas' => $this->faker->placas,
             'tlf' => $this->faker->tlf,
             
         ];

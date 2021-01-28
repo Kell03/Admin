@@ -7,8 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class gandola extends Model
 {
-    use HasFactory;
 
+public function scopeBuscarpor($query, $tipo, $buscar){
+      
+      if(($tipo) && ($buscar)){
+
+        return $query->where($tipo, 'like', "%$buscar%");
+
+      }
+
+  }
 
     protected $fillable = [
         'propietario',

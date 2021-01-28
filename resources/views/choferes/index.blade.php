@@ -4,19 +4,38 @@
 <div class="container">
 <h2>Lista de choferes <a href="{{ route('choferes.create')}}"><button type="button" class="btn btn-success float-right">Agregar Chofer</button></a>
 </h2>
+<nav class="navbar navbar-light float-right">
+  <form class="form-inline">
+    <div class="input-group input-group-sm"> 
+    
+     
+     <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+      <option>Buscar por</option>
+      <option>names</option>
+      <option>Apellido</option>
+      <option>Cedula</option>
+    </select>
 
-<h6>
+    <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
-  @if($search)
-  <div class="alert alert-primary"  role="alert">
-   
- Los resultados de tu  busqueda  {{$search}} son:
-</div>
-
-@endif
-</h6>
+    <div class="input-group-append">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+  </div>
+    </div>
+  </form>
+</nav>
 
 
+    </div>
+    </form>
+</nav>
+
+
+
+
+    <br>  
+
+<div class="container"> 
 <table class="table table-hover">
   <thead>
     <tr>
@@ -40,7 +59,7 @@
       <td>{{$chofere->names}}</td>
       <td>{{$chofere->apellido}}</td>
       <td>{{$chofere->cedula}}</td>
-      <td>{{$chofere->placa}}</td>
+      <td>{{$chofere->placas}}</td>
       <td>{{$chofere->tlf}}</td>
       
 <td>      
@@ -67,6 +86,12 @@
    @endforeach
   </tbody>
 </table>
+<h4>  
+El numero de Choferes es: {{$chofer}}
+</h4>
+<br>  
+{{ $choferes->links() }}
 
 </div>
 @endsection
+</div>
