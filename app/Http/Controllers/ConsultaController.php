@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateGuiaRequest;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\guias;
 use App\Models\guia;
+use App\Exports\guiaExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ConsultaController extends Controller
 {
@@ -17,22 +20,20 @@ class ConsultaController extends Controller
     public function index(Request $request)
     {
       
-  $desde = $request->get('desde');
+        $desde = $request->get('desde');
 
-  $hasta = $request->get('hasta');
-     
-      $total_record=guias
-        ::join("choferes","choferes.cedula" ,"=","guias.chofer")
-        ->Buscar($desde,$hasta)
+        $hasta = $request->get('hasta');
+        //var_dump($desde);
+        //var_dump($hasta);
+        $total_record=guias
+        ::Buscar($desde,$hasta)
         ->select("guias.*")->count();
 
-      $guias = guias
-        ::join("choferes","choferes.cedula" ,"=","guias.chofer")
-        ->Buscar($desde,$hasta)
-        ->select("guias.*", "choferes.names", "choferes.apellido")->simplepaginate(5);
-          return view('consultas.index',compact('guias', 'total_record'));
-
-
+        //VAR_DUMP($total_record);
+        $guias = guias
+        ::Buscar($desde,$hasta)
+        ->simplepaginate(5);
+          return view('consultas.index',compact('guias', 'total_record', 'desde', 'hasta'));
 
 
     }

@@ -66,7 +66,7 @@
 
       <td>{{$guia->guia}}</td>
      {{--<td>{{$guia->names." ".$guia->apellido}}</td>--}}
-      <td>{{$guia->nombre}}</td>
+      <td>{{$guia->chofer}}</td>
        <td>{{$guia->placa}}</td>
        <td>{{$guia->names_origen}}</td>
       <td>{{$guia->names_destino}}</td>

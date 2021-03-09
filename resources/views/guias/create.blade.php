@@ -27,25 +27,10 @@
     <label for="Guia">Guia</label>
     <input type="text" class="form-control" name="guia" placeholder="Escribe la guia" >
   </div>
-  <div class="form-group">
-    <label for="Nombre">Chofer</label>
-    <select class = "form-control border-0 bg-light shadow-sm" name="chofer">
-        
-        <option>  </option>
-        @foreach($chofere as $row)
-        <option value="{{ $row->cedula}}">
-        {{ $row->id}}. {{ $row->names}} {{ $row->apellido}} 
-        - {{ $row->cedula}}
-        </option>
-        @endforeach
-        
-       
-    </select>
-</div>
 
 <div class="form-group">
     <label for="Nombre"> Nombre </label>
-    <select class = "form-control border-0 bg-light shadow-sm" name="nombre">
+    <select class = "form-control border-0 bg-light shadow-sm" name="chofer">
         <option> </option>
        
        @foreach($chofere as $row)
@@ -62,6 +47,25 @@
 
 
 </div>
+
+
+  
+  <div class="form-group">
+    <label for="Nombre">Cedula</label>
+    <select class = "form-control border-0 bg-light shadow-sm" name="id_chofer">
+        
+        <option>  </option>
+        @foreach($chofere as $row)
+        <option value="{{ $row->cedula}}">
+        {{ $row->id}}. {{ $row->names}} {{ $row->apellido}} 
+        - {{ $row->cedula}}
+        </option>
+        @endforeach
+        
+       
+    </select>
+</div>
+
 
     <div class="form-group">
     <label for="placa">Placa</label>

@@ -90,10 +90,17 @@ Route::get('/guias/{id}', [App\Http\Controllers\GuiaController::class, 'show'])-
 
 Route::get('/consultas', [App\Http\Controllers\ConsultaController::class, 'index'])->name('consultas.index');
 Route::get('/consulta', [App\Http\Controllers\CombinadaController::class, 'index'])->name('consultas.consul');
+Route::get('/consultaaa', [App\Http\Controllers\consulta2controller::class, 'index'])->name('consultas.consultaaa');
 
 Route::get('/excel/post-export', [App\Http\Controllers\GuiaController::class, 'export'])->name('post.export');
+
+Route::get('user-list-pdf', [App\Http\Controllers\GuiaController::class, 'exportPdf'])->name('user.pdf');
+Route::get('uuser-list-pdf', [App\Http\Controllers\GuiaController::class, 'exportarPdf'])->name('uuser.pdf');
+
 
 
 Route::get('/notas/todas', [App\Http\Controllers\NotasController::class, 'todas']);
 Route::get('/notas/favoritas', [App\Http\Controllers\NotasController::class, 'favoritas']);
 Route::get('/notas/archivadas', [App\Http\Controllers\NotasController::class, 'archivadas']);
+
+

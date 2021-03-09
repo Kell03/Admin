@@ -6,12 +6,15 @@ use App\Http\Requests\ChofereFormRequest;
 use App\Http\Requests\cedeformrequest;
 
 use App\Exports\guiaExport;
+use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\guia;
 use App\Models\chofere;
 use App\Models\cede;
 use App\Models\Dueño;
 use App\Models\gandola;
+use App\Models\guias;
+
 
 
 use Illuminate\Http\Request;
@@ -61,9 +64,15 @@ $guias = guia
 ->select("guias.*", "cedes_origen.names as names_origen", "cedes_destino.names as names_destino")
 ->simplepaginate(5);
 
+$guias_exportar = guia
+::join("cedes as cedes_origen","cedes_origen.codigo" ,"=","guias.origen")
+->join("cedes as cedes_destino","cedes_destino.codigo" ,"=","guias.destino")
+->buscarpor($tipo, $buscar)
+->select("guias.*", "cedes_origen.names as names_origen", "cedes_destino.names as names_destino");
 
 
  //$guia = guia::where('created_at', 'like', "%$time%")->paginate(5);
+
  return view('guias.index',compact('guias', 'guie'));
 
 
@@ -90,12 +99,75 @@ $guias = guia
      * @return \Illuminate\Http\Response
      */
      
+     
+
+    public function exportPdf(Request $request)
+    {
+
+       $desde = $request->get('desde');
+
+       $hasta = $request->get('hasta'); 
+        //$desde = "2021-01-01";
+        //$hasta = "2021-01-31";      
+        //var_dump($desde);
+        //var_dump($hasta).exit;
+        //$guias = guias
+        //::get();
+        //$total_record=12;
+        $guias = guias
+        ::Buscar($desde,$hasta)
+        ->simplepaginate(15);
+          //return view('consultas.index',compact('guias', 'total_record'));
+
+        $pdf     = PDF::loadView('pdf.user', compact('guias','desde', 'hasta'));
+       
+
+        return $pdf->download('user-list.pdf');
+
+
+
+
+    }
+
+        public function exportarPdf(Request $request)
+    {
+
+   $buscar = $request->get('buscar');
+
+  $tipo = $request->get('tipo');
+
+       $desde = $request->get('desde');
+
+       $hasta = $request->get('hasta'); 
+        //$desde = "2021-01-01";
+        //$hasta = "2021-01-31";      
+        //var_dump($desde);
+        //var_dump($hasta).exit;
+        //$guias = guias
+        //::get();
+        //$total_record=12;
+        $guias = guias
+        ::Buscar($desde,$hasta)->buscarpor($tipo, $buscar)
+        ->simplepaginate(15);
+          //return view('consultas.index',compact('guias', 'total_record'));
+
+        $pdf     = PDF::loadView('pdf.uuser', compact('guias'));
+       
+
+        return $pdf->download('user-list.pdf');
+
+
+
+
+    }
+
+
      public function export()
     {
 
 
 
-        return (new guiaExport)->forYear(2010)->download('Reporte.xlsx');
+        return Excel::download(new guiaExport, 'Reporte.xlsx');
 
 
 

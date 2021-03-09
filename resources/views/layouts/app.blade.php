@@ -384,6 +384,19 @@
                                 </a>
 
                             </li>
+
+
+                                                        <li class="nav-item">
+                                <a href="{{route('consultas.consultaaa')}}"
+                                class="{{ Request::path() === 'consultaaa' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon far fa-newspaper  "></i>
+                                    <p>
+                                    Consulta(Triple)
+                                    
+                                    </p>
+                                </a>
+
+                            </li>
                            </ul> 
                             @endcan
 
@@ -402,7 +415,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
+                                        <a href="#"
                                             class="{{ Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Favoritas</p>

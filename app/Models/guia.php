@@ -20,12 +20,13 @@ class Guia extends Model
 
 
 
+
   }
 	
    protected $fillable = [
         'guia',
+        'id_chofer',
         'chofer',
-        'nombre',
         'placa',
         'dueño',
         'origen',

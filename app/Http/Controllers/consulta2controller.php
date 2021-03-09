@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\CreateGuiaRequest;
 
 use Illuminate\Http\Request;
 use App\Models\consulta;
 use App\Models\guia;
 use App\Models\guias;
 
-
-class CombinadaController extends Controller
+class consulta2controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,33 +17,21 @@ class CombinadaController extends Controller
      */
     public function index(Request $request)
     {
-       
-    $desde=$request->get('desde');
 
-    $hasta=$request->get('hasta');
-       
-    $buscar = $request->get('buscar');
+        $desde=$request->get('desde');
+        $hasta=$request->get('hasta');
+        $buscar = $request->get('buscar');
+        $tipo = $request->get('tipo');
+        $buscar2 = $request->get('buscar2');
+        $tipo2 = $request->get('tipo2');
 
-
-  $tipo = $request->get('tipo');
-
-       $total_records = guias
+        $guias= guias
        :://join("choferes","choferes.cedula" ,"=","guias.chofer")
        Buscar($desde, $hasta)
        ->buscarpor($tipo, $buscar)
-       ->select("guias.*")->count();
-            
-
-
-       $guias = guias
-       :://join("choferes","choferes.cedula" ,"=","guias.chofer")
-       Buscar($desde, $hasta)
-       ->buscarpor($tipo, $buscar)
+       ->buscarpor2($tipo2, $buscar2)
        ->select("guias.*")->simplepaginate(5);
-            
-          return view('consultas.consul',compact('guias', 'total_records', 'desde', 'hasta', 'buscar', 'tipo'));
-
-
+        return view('consultas.consultaaa', compact('guias','desde', 'hasta', 'buscar', 'tipo','buscar2', 'tipo2'));
     }
 
     /**

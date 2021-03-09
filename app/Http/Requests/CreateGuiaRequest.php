@@ -28,7 +28,7 @@ class CreateGuiaRequest extends FormRequest
 
             'guia'=>'required',
           'chofer'=>'required',
-          'nombre'=>'required',
+          'id_chofer'=>'required',
           'placa'=>'required',
           'dueño'=>'required',
           'origen'=>'required',

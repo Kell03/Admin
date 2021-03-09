@@ -57,9 +57,24 @@
     </select>
 
 
+ 
+
     
     <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
+    <select name="tipo2" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+      <option>Buscar por</option>
+      <option>Guia</option>
+      <option>Chofer</option>
+      <option>placa</option>
+      <option>Dueño</option>
+      <option>Carga</option>
+      <option>Origen</option>
+      <option>Destino</option>
+      <option>Status</option>
+    </select>
+
+    <input name="buscar2" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
     <div class="input-group-append">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
@@ -91,7 +106,7 @@
   </thead>
   <tbody>
 
-  	@foreach($guias as $guia)
+    @foreach($guias as $guia)
     <tr>
 
       <td>{{$guia->guia}}</td>
@@ -117,9 +132,9 @@
   </tbody>
 </table>
 
-<h4>tipo= {{$tipo}}</h4>
-<h4>dato= {{$buscar}}</h4>
-<h4>El numero de registros es = {{$total_records}}
+{{--<h4>tipo= {{$tipo}}</h4>
+<h4>dato= {{$buscar}}</h4>--}}
+{{--<h4>El numero de registros es = {{$total_records}}--}}
 </h4>
 
 <nav class="navbar navbar-light float-right">

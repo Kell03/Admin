@@ -21,8 +21,9 @@ class consulta extends Model
   }
 
 
-   protected $fillable = [
+protected $fillable = [
         'guia',
+        'id_chofer',
         'chofer',
         'placa',
         'dueño',
@@ -34,5 +35,4 @@ class consulta extends Model
          'status',
         
     ];
-
-}
+  }

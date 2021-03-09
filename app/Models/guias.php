@@ -12,22 +12,45 @@ class Guias extends Model
 
     public function scopeBuscar($query, $desde, $hasta){
       
-  if(($desde) && ($hasta)){
+  		if(($desde) && ($hasta)){
 
-        return $query->whereBetween('guias.created_at', ["$desde","$hasta"]);
+        	return $query->whereBetween('guias.created_at', ["$desde","$hasta"]);
 
-      }
+      	}
       
-}
+	}
 
-      public function scopeBuscarpor($query, $tipo, $buscar){
+     public function scopeBuscarpor($query, $tipo, $buscar){
       
-      if(($tipo) && ($buscar)){
+      		if(($tipo) && ($buscar)){
 
-        return $query->where($tipo, 'like', "%$buscar%");
+        		return $query->where($tipo, 'like', "%$buscar%");
 
-      }
+     		 }
 
 
+	}
+
+       public function scopeBuscarpor2($query, $tipo2, $buscar2){
+      
+          if(($tipo2) && ($buscar2)){
+
+            return $query->where($tipo2, 'like', "%$buscar2%");
+
+         }
 }
+	protected $fillable = [
+        'guia',
+        'id_chofer',
+        'chofer',
+        'placa',
+        'dueño',
+        'origen',
+        'destino',
+        'carga',
+        'created_at',
+        'updated_at',
+         'status',
+        
+    ];
    }
