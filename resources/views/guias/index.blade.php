@@ -42,7 +42,7 @@
 <br>
 </br>
 <div class="container">
-<table class="table table-hover">
+<table class="table  table-hover">
   <thead>
     <tr>
      

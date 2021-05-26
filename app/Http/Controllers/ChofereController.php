@@ -71,14 +71,18 @@ $choferes = chofere
         $choferes->names = request('names');
         $choferes->apellido = request('apellido');
         $choferes->cedula = request('cedula');
-        $choferes->placas = request('placas');
         $choferes->tlf = request('tlf');
+        $choferes->created_at = request('created_at');
+        
 
         $choferes->save();
 
         return redirect('/choferes');
 
             }
+
+
+            
 
     /**
      * Display the specified resource.

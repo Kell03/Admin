@@ -26,6 +26,7 @@ class DueñoFormRequest extends FormRequest
         return [
         'codigo' => 'required|max:255',
         'dueño' => 'required|max:255',
+        'nombre' => 'required|max:255',
 
         ];
     }

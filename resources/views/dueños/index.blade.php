@@ -15,6 +15,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">codigo</th>
+      <th scope="col">Nombre</th>
       <th scope="col">Dueño</th>
       <th scope="col">Opciones</th>
     </tr>
@@ -25,6 +26,7 @@
     <tr>
       <th scope="row">{{$dueño->id}}</th>
       <td>{{$dueño->codigo}}</td>
+      <td>{{$dueño->nombre}}</td>
       <td>{{$dueño->dueño}}</td>
 
        <td>      

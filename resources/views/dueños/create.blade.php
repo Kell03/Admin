@@ -11,6 +11,11 @@
     <label for="codigo">Codigo.</label>
     <input type="text" class="form-control" name="codigo" placeholder="Escribe el Codigo" >
   </div>
+   <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" name="nombre" placeholder="Escribe el Dueño" >
+
+  </div>
   <div class="form-group">
     <label for="dueño">Dueño</label>
     <input type="text" class="form-control" name="dueño" placeholder="Escribe el Dueño" >

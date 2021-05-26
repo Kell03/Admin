@@ -28,9 +28,8 @@ class ChofereFormRequest extends FormRequest
         'names'=>'required|max:255',
         'apellido'=>'required|max:255',
         'cedula'=>'required|max:255',
-        'placas'=>'required|max:255',
         'tlf'=>'required|max:255',
-
+         'created_at'=>'required',
         ];
     }
 }

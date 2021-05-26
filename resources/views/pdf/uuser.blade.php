@@ -51,9 +51,11 @@
        <td>{{$guia->updated_at}}</td>
 
 
+
       </tr>      
 
                 @endforeach
+
 
     </tbody>
   </table>

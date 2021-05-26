@@ -26,9 +26,18 @@
     <label for="names">Codigo</label>
     <input type="text" class="form-control" name="codigo" value="{{$dueño->codigo}}"placeholder="Escribe la dueño" >
   </div>
+
+
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" name="nombre" value="{{$dueño->nombre}}" placeholder="Escribe el Dueño" >
+
+  </div>
+
+
   <div class="form-group">
     <label for="codigo">Dueño</label>
-    <input type="text" class="form-control" name="dueño" value="{{$dueño->dueño}}" placeholder="Escribe el codigo" >
+    <input type="text" class="form-control" name="dueño" value="{{$dueño->dueño}}" placeholder="Escribe el Dueño" >
 
   </div>
 

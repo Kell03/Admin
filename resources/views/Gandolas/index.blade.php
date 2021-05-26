@@ -13,6 +13,7 @@
      
      <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
       <option>Buscar por</option>
+      <option>Propietario</option>
       <option>Placa</option>
       <option>Modelo</option>
       <option>Marca</option>
@@ -39,7 +40,7 @@
 
 <div class="container">
 
-<table class="table table-hover">
+<table class="table table-sm table-hover">
   <thead>
     <tr>
       <th scope="col">Id</th>

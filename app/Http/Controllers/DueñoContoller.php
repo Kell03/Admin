@@ -42,7 +42,7 @@ class DueñoContoller extends Controller
 
         $dueño->codigo = request('codigo');
         $dueño->dueño = request('dueño');
-
+        $dueño->nombre = request('nombre');
         $dueño->save();
 
         return redirect('/dueños');
@@ -84,6 +84,8 @@ class DueñoContoller extends Controller
 
         $dueño->codigo = $request->get('codigo');
         $dueño->dueño = $request->get('dueño');
+                $dueño->nombre = request('nombre');
+
 
         $dueño->update();
 

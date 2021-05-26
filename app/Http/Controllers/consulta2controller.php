@@ -25,13 +25,22 @@ class consulta2controller extends Controller
         $buscar2 = $request->get('buscar2');
         $tipo2 = $request->get('tipo2');
 
+        $total_records= guias
+       ::
+       Buscar($desde, $hasta)
+       ->buscarpor($tipo, $buscar)
+       ->buscarpor2($tipo2, $buscar2)
+       ->select("guias.*")->count();
+
+
         $guias= guias
        :://join("choferes","choferes.cedula" ,"=","guias.chofer")
        Buscar($desde, $hasta)
        ->buscarpor($tipo, $buscar)
        ->buscarpor2($tipo2, $buscar2)
        ->select("guias.*")->simplepaginate(5);
-        return view('consultas.consultaaa', compact('guias','desde', 'hasta', 'buscar', 'tipo','buscar2', 'tipo2'));
+
+        return view('consultas.consultaaa', compact('guias', 'total_records','desde', 'hasta', 'buscar', 'tipo','buscar2', 'tipo2'));
     }
 
     /**

@@ -18,7 +18,6 @@ class CreateChoferesTable extends Migration
             $table->string('names');
             $table->string('apellido');
             $table->integer('cedula');
-            $table->string('placas');
             $table->string('tlf');
             $table->timestamps();
         });

@@ -34,7 +34,7 @@ class GandolaController extends Controller
 
 $gandolas = gandola
 ::Buscarpor($tipo, $buscar)
-->simplepaginate(5);
+->simplepaginate(10);
 
 
       return view('gandolas.index', compact('gand', 'gandolas'));

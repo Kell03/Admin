@@ -13,7 +13,7 @@
          <option></option>
 
         @foreach($dueño as $row)
-        <option value="{{$row->dueño}}">{{$row->codigo}}-{{$row->dueño}} </option>
+        <option value="{{$row->dueño}}">{{$row->nombre}}-{{$row->dueño}} </option>
         
 
 @endforeach
@@ -22,35 +22,35 @@
   </div>
 
   <div class="form-group">
-    <label for="marca">marca</label>
+    <label for="marca">Marca</label>
     <input type="text" class="form-control" name="marca" placeholder="Escribe la marca" >
 
   </div>
 
     <div class="form-group">
-    <label for="modelo">modelo</label>
+    <label for="modelo">Modelo</label>
     <input type="text" class="form-control" name="modelo" placeholder="Escribe el modelo">
   </div>
 
   <div class="form-group">
-    <label for="placa">placa</label>
+    <label for="placa">Placa</label>
     <input type="text" class="form-control" name="placa" placeholder="Escribe el placa">
   </div>
 
 
 
     <div class="form-group">
-    <label for="descripcion">descripcion</label>
+    <label for="descripcion">Descripcion</label>
     <input type="text" class="form-control" name="descripcion" placeholder="Escribe el descripcion">
   </div>
 
 <div class="form-group">
-      <label for="estado">estado</label>
+      <label for="estado">Estado</label>
     
   <select  name="estado" class="form-control border-0 bg-light shadow-sm">
     <option ></option>
     <option>Dañado</option>
-    <option>optimo</option>
+    <option>Optimo</option>
 </select>
 
 </div>

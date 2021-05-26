@@ -22,6 +22,9 @@ use Illuminate\Http\Request;
 class GuiaController extends Controller
 {
 
+
+     
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -37,9 +40,8 @@ class GuiaController extends Controller
  
 
 
-   $buscar = $request->get('buscar');
-
-  $tipo = $request->get('tipo');
+             $buscar = $request->get('buscar');
+             $tipo = $request->get('tipo');
    
  //$guia = guia::buscarpor($tipo, $buscar)->paginate(5);
 
@@ -47,7 +49,7 @@ class GuiaController extends Controller
 
 
 
-  $time = $request->get('tiempo'); 
+                   $time = $request->get('tiempo'); 
 
 
 // $guie = guia::select('guias')->count(); 
@@ -74,6 +76,9 @@ $guias_exportar = guia
  //$guia = guia::where('created_at', 'like', "%$time%")->paginate(5);
 
  return view('guias.index',compact('guias', 'guie'));
+
+
+
 
 
 
@@ -119,7 +124,7 @@ $guias_exportar = guia
         ->simplepaginate(15);
           //return view('consultas.index',compact('guias', 'total_record'));
 
-        $pdf     = PDF::loadView('pdf.user', compact('guias','desde', 'hasta'));
+        $pdf = PDF::loadView('pdf.user', compact('guias','desde', 'hasta'));
        
 
         return $pdf->download('user-list.pdf');
@@ -129,7 +134,7 @@ $guias_exportar = guia
 
     }
 
-        public function exportarPdf(Request $request)
+ public function exportarPdf(Request $request)
     {
 
    $buscar = $request->get('buscar');
@@ -161,11 +166,36 @@ $guias_exportar = guia
 
     }
 
+      public function exportartriplePdf(Request $request)
+    {
+
+        $desde=$request->get('desde');
+        $hasta=$request->get('hasta');
+        $buscar = $request->get('buscar');
+        $tipo = $request->get('tipo');
+        $buscar2 = $request->get('buscar2');
+        $tipo2 = $request->get('tipo2');
+
+        $guias = guias
+        ::Buscar($desde,$hasta)->buscarpor($tipo, $buscar)
+        ->buscarpor2($tipo2, $buscar2)
+        ->simplepaginate(15);
+          //return view('consultas.index',compact('guias', 'total_record'));
+
+        $pdf = PDF::loadView('pdf.uuser', compact('guias'));
+       
+
+        return $pdf->download('user-list.pdf');
+
+
+    }
+
 
      public function export()
     {
 
-
+         
+         
 
         return Excel::download(new guiaExport, 'Reporte.xlsx');
 

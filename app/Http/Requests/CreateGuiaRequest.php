@@ -28,14 +28,14 @@ class CreateGuiaRequest extends FormRequest
 
             'guia'=>'required',
           'chofer'=>'required',
-          'id_chofer'=>'required',
+          //'id_chofer'=>'required',
           'placa'=>'required',
           'dueño'=>'required',
           'origen'=>'required',
           'destino'=>'required',
           'carga'=>'required',
           'created_at'=>'required',
-          'updated_at'=>'required',
+          'updated_at'=>'',
           'status'=>'required',
 
         ];

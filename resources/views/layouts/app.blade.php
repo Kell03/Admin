@@ -11,14 +11,21 @@
     <title>SIGESGUI </title>
     
     <link rel="icon" type="img/jpg" href="{{asset('dist/img/lll.png') }}">
+    <!--agregado --><link rel="stylesheet" type="text/css" href="{{ asset('js/jquery-ui.css')}} ">
 
 
     <!-- Scripts -->
+     <!--agregado --> <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js" defer></script>
     @stack('scripts')
     <script src="dist/js/adminlte.js"></script>
+     <!--agregado --><script  type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"> </script>
+     <!--select 2 --> <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+     <!--select 2 --><script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -455,7 +462,7 @@
             <!-- /.content-wrapper -->
             <footer class="main-footer">
                 <!-- NO QUITAR -->
-                <strong>Tutoriales YouTube
+                <strong>@SIGESGUI 2021
                     <div class="float-right d-none d-sm-inline-block">
                         <b>Version</b> 1.0
                     </div>

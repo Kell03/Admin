@@ -28,6 +28,7 @@
       <td>{{$guia->created_at}}</td>
       <td>{{$guia->updated_at}}</td>
         </tr>
+
     @endforeach
     </tbody>
 </table>

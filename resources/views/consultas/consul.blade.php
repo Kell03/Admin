@@ -74,7 +74,7 @@
 <br>
 </br>
 <div class="container">
-<table class="table table-hover">
+<table class="table table-sm table-hover">
   <thead>
     <tr>
      
@@ -126,7 +126,7 @@
   <form class="form-inline">
     <div class="input-group input-group-sm"> 
 
-<a href="{{ route('post.export')}}"><button type="button" class="btn btn-success btn-lg"> Exportar
+<a href="{{ route('exportaritemII',array('desde'=>$desde,'hasta'=>$hasta, 'tipo'=>$tipo, 'buscar'=>$buscar))}}"><button type="button" class="btn btn-success btn-lg"> Exportar
                           <i class="fas fa-download"></i>
 
      

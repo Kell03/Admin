@@ -29,30 +29,57 @@
   </div>
 
 <div class="form-group">
-    <label for="Nombre"> Nombre </label>
-    <select class = "form-control border-0 bg-light shadow-sm" name="chofer">
-        <option> </option>
-       
-       @foreach($chofere as $row)
+      <label for="placa">Nombre</label>
 
-              <option value="{{ $row->names." ".$row->apellido}}">
-        {{ $row->cedula}}. {{ $row->names}} {{ $row->apellido}} 
-       
-        </option>
+    <input  type="text" class="form-control"  id="chofer" name="chofer" placeholder="Ingresar nombre...">
 
 
+ <?php
+$link = mysqli_connect("localhost", "root", "");
+mysqli_select_db($link ,"gestra");
+$result = mysqli_query($link ,"SELECT names, apellido FROM choferes");
+$array = array();
+if($result){
 
-       @endforeach
-    </select>
+  while($row = mysqli_fetch_array($result)){
+
+    $equipo = utf8_encode($row['names']." ".$row['apellido']);
+    array_push($array, $equipo);
+  
+
+  }
+}
 
 
-</div>
+
+?>
+        
+
+        <script type="text/javascript">
+    
+
+    $(document).ready(function(){
+
+var items = <?= json_encode($array);
+               ?>
+
+$("#chofer").autocomplete({
+
+  source: items
+});
+});
+  </script>
+ 
+ </div>  
 
 
   
-  <div class="form-group">
-    <label for="Nombre">Cedula</label>
-    <select class = "form-control border-0 bg-light shadow-sm" name="id_chofer">
+  {{--<div class="form-group">
+ 
+   <input class="form-control" type="hidden" id="id_chofer" name="id_chofer">
+
+
+    <select class = "form-control border-0 bg-light shadow-sm" id="cedula" name="id_chofer">
         
         <option>  </option>
         @foreach($chofere as $row)
@@ -64,35 +91,99 @@
         
        
     </select>
-</div>
+</div>--}}
 
 
     <div class="form-group">
     <label for="placa">Placa</label>
-<select class="form-control border-0 bg-light shadow-sm" name="placa">
-	<option></option>
-	@foreach($chofere as $row)
-<option value="{{$row->placas}}">
-	{{$row->id}}. {{$row->names}}-{{$row->placas}}
 
-</option>
-@endforeach
-</select>  
+
+  <select class = "form-control border-0 bg-light shadow-sm"  id="referencia" name="referencia" onchange="mostrar()">
+        
+        <option>  </option>
+        @foreach($gandola as $row)
+        <option value="{{ $row->propietario}}">
+         {{ $row->placa}}  
+        
+        </option>
+        @endforeach
+        
+       
+    </select>      
+  
+<script type="text/javascript">
+   
+
+
+    $(document).ready(function(){
+        
+        $('#referencia').select2();
+
+
+});
+
+     function mostrar(){
+
+
+var lista = document.getElementById("referencia");
+
+// Obtener el índice de la opción que se ha seleccionado
+var indiceSeleccionado = lista.selectedIndex;
+// Con el índice y el array "options", obtener la opción seleccionada
+var opcionSeleccionada = lista.options[indiceSeleccionado];
+// Obtener el valor y el texto de la opción seleccionada
+var textoSeleccionado = opcionSeleccionada.text;
+
+
+
+var dueño = document.getElementById("referencia").value;
+
+document.getElementById("dueño").value=dueño;
+
+
+document.getElementById("placa").value=textoSeleccionado;
+
+
+
+  }
+
+
+
+
+
+  </script>
+ 
+</div>
+ <div class="form-group">
+    
+  <input type="text" class="form-control" style="display:none" name="placa" id="placa">
+
 
 </div>
+
+
+
+
+
 <div class="form-group">
-    <label for="dueño">dueño</label>
-<select class="form-control border-0 bg-light shadow-sm" name="dueño">
-    <option></option>
+    <label for="dueño">Dueño</label>
+
+  <input type="text" class="form-control"  name="dueño" id="dueño">
+{{-- <select class="form-control border-0 bg-light shadow-sm" name="dueño">
+   <option></option>
     @foreach($dueño as $row)
-<option value="{{$row->dueño}}"> {{$row->codigo}} - {{$row->dueño}}
+<option value="{{$row->dueño}}"> {{$row->nombre}} - {{$row->dueño}}
 
 </option>
 @endforeach
 </select>
+
+</div>--}}
+
+</div>
     <div class="form-group">
     <label for="cede">Origen</label>
-<select class="form-control border-0 bg-light shadow-sm" name="origen">
+{{--<select class="form-control border-0 bg-light shadow-sm" name="origen">
 	<option></option>
 	@foreach($cede as $row)
 <option value="{{$row->codigo}}">
@@ -100,13 +191,51 @@
 
 </option>
 @endforeach
-</select>  
+</select>  --}}
+
+<input type="text" class="form-control" name="origen" id="origen" placeholder="Ingresar Origen">
+ <?php
+$link = mysqli_connect("localhost", "root", "");
+mysqli_select_db($link ,"gestra");
+$result = mysqli_query($link ,"SELECT codigo FROM cedes");
+$array = array();
+if($result){
+
+  while($row = mysqli_fetch_array($result)){
+
+    $equipo = utf8_encode($row['codigo']);
+    array_push($array, $equipo);
+  
+
+  }
+}
+
+
+
+?>
+        
+
+        <script type="text/javascript">
+    
+
+    $(document).ready(function(){
+
+var items = <?= json_encode($array);
+               ?>
+
+$("#origen").autocomplete({
+
+  source: items
+});
+});
+  </script>
+
 
 </div>
 
 <div class="form-group">
     <label for="cede">Destino</label>
-<select class="form-control border-0 bg-light shadow-sm" name="destino">
+{{--<select class="form-control border-0 bg-light shadow-sm" name="destino">
 	<option></option>
 	@foreach($cede as $row)
 <option value="{{$row->codigo}}">
@@ -114,7 +243,45 @@
 
 </option>
 @endforeach
-</select>  
+</select>  --}}
+
+<input type="text" class="form-control" name="destino" id="destino" placeholder="Ingresar Origen">
+ <?php
+$link = mysqli_connect("localhost", "root", "");
+mysqli_select_db($link ,"gestra");
+$result = mysqli_query($link ,"SELECT codigo FROM cedes");
+$array = array();
+if($result){
+
+  while($row = mysqli_fetch_array($result)){
+
+    $equipo = utf8_encode($row['codigo']);
+    array_push($array, $equipo);
+  
+
+  }
+}
+
+
+
+?>
+        
+
+        <script type="text/javascript">
+    
+
+    $(document).ready(function(){
+
+var items = <?= json_encode($array);
+               ?>
+
+$("#destino").autocomplete({
+
+  source: items
+});
+});
+  </script>
+ 
 
 </div>
 
@@ -124,7 +291,7 @@
 	<option></option>
 <option value="Materia Prima"> Materia Prima</option>
 <option value="Producto"> Producto</option>
-<option value="Otro"> Otro</option>
+<option value="Plancha"> Plancha</option>
 
 </select>  
 
@@ -175,7 +342,7 @@
     }else{
 
 
-        $fechas = date('y-m-d H:i:s');
+        $fecha = date('y-m-d H:i:s');
     }
 
    ?>  
@@ -184,17 +351,18 @@
     <input class="form-control border-0 bg-light shadow-sm"
 
      
-     type="date" 
+     type="Date" 
 
      name="updated_at"
-
+   
+     
            
      >
     
 
 </div>
 
-<label form="url"> Estado del Transporte: </label>
+<label form="url"> Estado de Guia: </label>
      <br>
 
 <div class="form-group form-check">

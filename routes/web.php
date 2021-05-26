@@ -26,6 +26,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 
 
+
 Route::get('/usuarios', [App\Http\Controllers\UserController::class, 'index'])->name('usuarios.index');
 Route::get('/usuarios/crear', [App\Http\Controllers\UserController::class, 'create'])->name('usuarios.create');
 Route::post('/usuarios', [App\Http\Controllers\UserController::class, 'store'])->name('usuarios.store');
@@ -78,7 +79,7 @@ Route::delete('/choferes/{id}', [App\Http\Controllers\ChofereController::class, 
 Route::get('/choferes/{id}', [App\Http\Controllers\ChofereController::class, 'show'])->name('choferes.show');
 
 
-
+//Route::get('/exportfile', [App\Http\Controllers\GuiaController::class, 'exports'])->name('exportaritem');
 Route::get('/guias', [App\Http\Controllers\GuiaController::class, 'index'])->name('guias.index');
 Route::get('/guias/crear', [App\Http\Controllers\GuiaController::class, 'create'])->name('guias.create');
 Route::POST('/guias', [App\Http\Controllers\GuiaController::class, 'store'])->name('guias.store');
@@ -94,8 +95,10 @@ Route::get('/consultaaa', [App\Http\Controllers\consulta2controller::class, 'ind
 
 Route::get('/excel/post-export', [App\Http\Controllers\GuiaController::class, 'export'])->name('post.export');
 
+Route::get('uuuser-list-pdf', [App\Http\Controllers\GuiaController::class, 'exportartriplePdf'])->name('uuuser.pdf');
 Route::get('user-list-pdf', [App\Http\Controllers\GuiaController::class, 'exportPdf'])->name('user.pdf');
 Route::get('uuser-list-pdf', [App\Http\Controllers\GuiaController::class, 'exportarPdf'])->name('uuser.pdf');
+
 
 
 
@@ -104,3 +107,12 @@ Route::get('/notas/favoritas', [App\Http\Controllers\NotasController::class, 'fa
 Route::get('/notas/archivadas', [App\Http\Controllers\NotasController::class, 'archivadas']);
 
 
+Route::get('/exportfile', [App\Http\Controllers\ExportController::class, 'exports'])->name('exportaritem');
+Route::get('/exportfileii', [App\Http\Controllers\ExportController::class, 'exportsII'])->name('exportaritemII');
+
+Route::get('/exportfileiii', [App\Http\Controllers\ExportController::class, 'exportsIII'])->name('exportaritemIII');
+
+
+Route::post('/mostrar', function () {
+    return view('motrar');
+});

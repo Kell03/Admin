@@ -24,110 +24,235 @@
     <input type="text" class="form-control" name="guia" value="{{ old('guia', $guia->guia) }}"  >
    
   </div>
-  <div class="form-group">
-    <label for="Nombre">Chofer</label>
 
-      <select class = "form-control border-0 bg-light shadow-sm" name="chofer">
+  <div class="form-group">
+    <label for="nombre">Chofer </label>
+
+   <input  type="text" class="form-control"  id="chofer" name="chofer"  value="{{ old('chofer', $guia->chofer) }}" placeholder="Ingresar nombre...">
+
+     <?php
+$link = mysqli_connect("localhost", "root", "");
+mysqli_select_db($link ,"gestra");
+$result = mysqli_query($link ,"SELECT names, apellido FROM choferes");
+$array = array();
+if($result){
+
+  while($row = mysqli_fetch_array($result)){
+
+    $equipo = utf8_encode($row['names']." ".$row['apellido']);
+    array_push($array, $equipo);
+  
+
+  }
+}
+
+
+
+?>
         
-        <option value="{{old('chofer', $guia->chofer)}}"> {{old ('chofer',$guia->chofer)}} </option>
-        @foreach($chofere as $row)
-        <option value="{{ $row->cedula}}">
-        {{ $row->id}}. {{ $row->names}} {{ $row->apellido}} 
-        - {{ $row->cedula}}
+
+        <script type="text/javascript">
+    
+
+    $(document).ready(function(){
+
+var items = <?= json_encode($array);
+               ?>
+
+$("#chofer").autocomplete({
+
+  source: items
+});
+});
+  </script>
+
+</div>
+
+
+
+    <div class="form-group">   
+   
+
+  <label for="placa">Placa</label>
+
+
+  <select class = "form-control border-0 bg-light shadow-sm"  id="referencia" name="referencia" onchange="mostrar()">
+        
+        <option value="{{ old('placa', $guia->placa) }}">{{ old('placa', $guia->placa) }}  </option>
+        @foreach($gandola as $row)
+        <option value="{{ $row->propietario}}">
+         {{ $row->placa}}  
+        
         </option>
         @endforeach
         
        
-    </select>
-
-  </div>
-
-
-  <div class="form-group">
-    <label for="Nombre"> Nombre </label>
-    <select class = "form-control border-0 bg-light shadow-sm" name="nombre">
-        <option value="{{old('nombre', $guia->nombre)}}"> {{old ('nombre',$guia->nombre)}} </option>
-       
-       @foreach($chofere as $row)
-
-              <option value="{{ $row->names. " " . $row->apellido}}">
-        {{ $row->cedula}}. {{ $row->names}} {{ $row->apellido}} 
-       
-        </option>
+    </select>      
+  
+<script type="text/javascript">
+   
 
 
+    $(document).ready(function(){
+        
+        $('#referencia').select2();
 
-       @endforeach
-    </select>
+
+});
+
+     function mostrar(){
+
+
+var lista = document.getElementById("referencia");
+
+// Obtener el índice de la opción que se ha seleccionado
+var indiceSeleccionado = lista.selectedIndex;
+// Con el índice y el array "options", obtener la opción seleccionada
+var opcionSeleccionada = lista.options[indiceSeleccionado];
+// Obtener el valor y el texto de la opción seleccionada
+var textoSeleccionado = opcionSeleccionada.text;
+
+
+
+var dueño = document.getElementById("referencia").value;
+
+document.getElementById("dueño").value=dueño;
+
+
+document.getElementById("placa").value=textoSeleccionado;
+
+
+
+  }
+
+
+
+
+
+  </script>
+ 
+</div>
+ <div class="form-group">
+    
+  <input type="text" class="form-control" style="display:none" name="placa" id="placa">
 
 
 </div>
 
 
-    <div class="form-group">   
-    <label for="placa">Placa</label>
-<select class="form-control border-0 bg-ligth shadow-sm" name="placa">
-
-  <option value="{{old('placa', $guia->placa)}}"> {{old ('placa',$guia->placa)}}</option>
-  @foreach($chofere as $row)
-<option value="{{$row->placa}}">
-  {{$row->id}}. {{$row->names}}-{{$row->placa}}
-
-</option>
-@endforeach
 
 
-</select>
-  
 
-<label for="dueño">dueño</label>
-<select class="form-control border-0 bg-light shadow-sm" name="dueño">
-    <option value="{{old ('placa', $guia->dueño)}}"> {{old ('dueño',$guia->dueño)}} </option>
+<div class="form-group">
+    <label for="dueño">Dueño</label>
+
+  <input type="text" class="form-control"value="{{ old('placa', $guia->dueño) }}"  name="dueño" id="dueño">
+{{-- <select class="form-control border-0 bg-light shadow-sm" name="dueño">
+   <option></option>
     @foreach($dueño as $row)
-<option value="{{$row->dueño}}"> {{$row->codigo}} - {{$row->dueño}}
+<option value="{{$row->dueño}}"> {{$row->nombre}} - {{$row->dueño}}
 
 </option>
 @endforeach
 </select>
 
-  </div>
+</div>--}}
+
+</div>
 
 
 
    <div class="form-group">
     <label for="cede">Origen</label>
-<select class="form-control border-0 bg-light shadow-sm" name="origen">
-  <option value="{{old('origen', $guia->origen)}}"> {{old('origen', $guia->origen)}}</option>
-  @foreach($cede as $row)
-<option value="{{$row->codigo}}">
-  {{$row->id}}. {{$row->names}}-{{$row->codigo}}
+<input  type="text" class="form-control"  id="origen" name="origen"  value="{{ old('origen', $guia->origen) }}" placeholder="Ingresar nombre...">
 
-</option>
-@endforeach
-</select>  
+     <?php
+$link = mysqli_connect("localhost", "root", "");
+mysqli_select_db($link ,"gestra");
+$result = mysqli_query($link ,"SELECT codigo FROM cedes");
+$array = array();
+if($result){
+
+  while($row = mysqli_fetch_array($result)){
+
+    $equipo = utf8_encode($row['codigo']);
+    array_push($array, $equipo);
+  
+
+  }
+}
+
+
+
+?>
+        
+
+        <script type="text/javascript">
+    
+
+    $(document).ready(function(){
+
+var items = <?= json_encode($array);
+               ?>
+
+$("#origen").autocomplete({
+
+  source: items
+});
+});
+  </script>
 
 </div>
 
 <div class="form-group">
     <label for="cede">Destino</label>
-<select class="form-control border-0 bg-light shadow-sm" name="destino">
-  <option value="{{old('destino', $guia->destino)}}">{{old('destino', $guia->destino)}}</option>
-  @foreach($cede as $row)
-<option value="{{$row->codigo}}">
-  {{$row->id}}. {{$row->names}}-{{$row->codigo}}
+<input  type="text" class="form-control"  id="destino" name="destino"  value="{{ old('destino', $guia->destino) }}" placeholder="Ingresar nombre...">
 
-</option>
-@endforeach
-</select>  
+     <?php
+$link = mysqli_connect("localhost", "root", "");
+mysqli_select_db($link ,"gestra");
+$result = mysqli_query($link ,"SELECT codigo FROM cedes");
+$array = array();
+if($result){
+
+  while($row = mysqli_fetch_array($result)){
+
+    $equipo = utf8_encode($row['codigo']);
+    array_push($array, $equipo);
+  
+
+  }
+}
+
+
+
+?>
+        
+
+        <script type="text/javascript">
+    
+
+    $(document).ready(function(){
+
+var items = <?= json_encode($array);
+               ?>
+
+$("#destino").autocomplete({
+
+  source: items
+});
+});
+  </script>
+ 
 
 </div>
 
 <div class="form-group">
-    <label for="carga">carga</label>
+    <label for="carga">Carga</label>
 <select class="form-control border-0 bg-light shadow-sm" name="carga">
   <option>{{old('carga', $guia->carga)}}</option>
 <option value="Materia Prima"> Materia Prima</option>
-<option value="Lleno"> Lleno</option>
+<option value="Producto"> Producto</option>
 <option value="Plancha"> Plancha</option>
 
 </select>  
@@ -166,7 +291,7 @@
 
      >
 
-
+</div>
 
 <div class="form-group">
 
@@ -206,7 +331,7 @@
 
 
  
- <label form="url"> Estado del Transporte: </label>
+ <label form="url"> Estado de Guia: </label>
      <br>
 
 <div class="form-group form-check">

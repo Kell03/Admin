@@ -36,15 +36,15 @@
     <br>  
 
 <div class="container"> 
-<table class="table table-hover">
+<table class="table table-sm table-hover">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">Cedula</th>
-      <th scope="col">Placa</th>
       <th scope="col">Telefono</th>
+      <th scope="col">Ingreso</th>
       <th scope="col">Opciones</th>
 
 
@@ -59,8 +59,8 @@
       <td>{{$chofere->names}}</td>
       <td>{{$chofere->apellido}}</td>
       <td>{{$chofere->cedula}}</td>
-      <td>{{$chofere->placas}}</td>
       <td>{{$chofere->tlf}}</td>
+      <td>{{$chofere->created_at}}</td>
       
 <td>      
 

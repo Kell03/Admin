@@ -16,6 +16,7 @@ class CreateDueñosTable extends Migration
         $table->id();
             $table->string('codigo');
             $table->string('dueño');
+            $table->string('nombre');
             $table->timestamps();
     }
 

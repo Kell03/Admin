@@ -39,15 +39,45 @@
   </div>
 
 
-  <div class="form-group">
-    <label for="placa">Placa</label>
-    <input type="text" class="form-control" name="placas" value="{{$choferes->placas}}" placeholder="Escribe el numero de placa">
-  </div>
 
     <div class="form-group">
     <label for="tlf">Telefono</label>
     <input type="text" class="form-control" name="tlf" value="{{$choferes->tlf}}" placeholder="Escribe el tlf">
   </div>
+
+<div class="form-group">
+
+
+ <label form="url"> @lang('Fecha de llegada') </label>
+
+    
+     <?php 
+    if(isset($choferes->created_at)){
+
+        $fecha = $choferes->created_at->format('Y-m-d');
+    }else{
+
+
+        $fecha = date('Y-m-d');
+    }
+
+   ?>  
+
+        
+    <input class="form-control border-0 bg-light shadow-sm"
+
+     
+     type="date" 
+
+     name="created_at"
+     placeholder="AAAA-MM-DD"
+
+     value="{{ old ('created_at', $fecha)}}" 
+
+     >
+
+</div>
+
 
     <button type="submit" class="btn btn-primary">Registrar</button>
 <a href="{{ route('choferes.index')}}"><button type="button" class="btn btn-danger ">Cancelar</button></a>

@@ -29,7 +29,7 @@
          <option value="{{old('propietario', $gandolas->propietario)}}"> {{old ('propietario',$gandolas->propietario)}}</option>
 
         @foreach($dueño as $row)
-        <option value="{{$row->dueño}}">{{$row->codigo}}-{{$row->dueño}} </option>
+        <option value="{{$row->dueño}}">{{$row->nombre}}-{{$row->dueño}} </option>
         
 
 @endforeach
@@ -101,7 +101,8 @@ required
 
 
     <button type="submit" class="btn btn-primary">Registrar</button>
-    <button type="reset" class="btn btn-danger">Cancelar</button>
+    <a href="{{route('gandolas.index')}}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+
 
 </form>
 

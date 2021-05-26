@@ -22,8 +22,7 @@ public function scopeBuscarpor($query, $tipo, $buscar){
 	    'names',
 	    'apellido',
 	    'cedula',
-	    'placas',
 	    'tlf',
-	    
+	    'created_at',
 	];
 }

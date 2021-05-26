@@ -27,20 +27,45 @@
 
 
 
-  <div class="form-group">
-    <label for="placa">Placa</label>
-    <select class="form-control border-0 bg-light shadow-sm" name="placas" >
-        @foreach($gandolas as $row)
-        <option></option>
-        <option value="{{$row->placa}}"> {{$row->id}}. {{$row->modelo}}-{{$row->placa}} </option>
-      @endforeach
-      </div>
-  </select>
-
+  
     <div class="form-group">
     <label for="tlf">Telefono</label>
     <input type="text" class="form-control" name="tlf" placeholder="Escribe el tlf">
     </div>
+
+<div class="form-group">
+
+
+ <label form="url"> @lang('Ingreso') </label>
+
+   
+
+
+    <input class="form-control border-0 bg-light shadow-sm"
+
+   <?php 
+    if(isset($choferes->created_at)){
+
+        $fecha = $choferes->created_at->format('y');
+    }else{
+
+
+        $fecha= Date('y-m-d H:i:s');
+    }
+
+   ?>  
+     type="Date" 
+
+     name="created_at"
+ >
+    
+
+</div>
+
+
+
+       
+
 
     <button type="submit" class="btn btn-primary">Registrar</button>
 <a href="{{ route('choferes.index')}}"><button type="button" class="btn btn-danger ">Cancelar</button></a>
